@@ -1193,19 +1193,25 @@
       setTimeout(typeEffect, speed);
     }
     setTimeout(typeEffect, 800);
-
 function executeSearch() {
   const query = document.getElementById('siteSearch').value.toLowerCase();
   if(!query) return;
   
-  // Ye search term ke hisab se scroll karega
   const sections = {
     "logo": "#graphics",
     "poster": "#graphics",
+    "flyer": "#graphics",
+    "business card": "#graphics",
     "video": "#video",
     "reel": "#video",
+    "tiktok": "#video",
+    "corporate promo": "#video",
     "order": "#orders-portal",
-    "portfolio": "#portfolio"
+    "pricing": "#orders-portal",
+    "portfolio": "#portfolio",
+    "case studies": "#portfolio",
+    "faq": "#faqs",
+    "contact": "#contact"
   };
 
   let found = false;
@@ -1218,13 +1224,11 @@ function executeSearch() {
   }
 
   if (!found) {
-    alert("Results not found. Try 'logo', 'video', or 'portfolio'.");
+    alert("Results not found. Try searching for 'logo', 'video', 'portfolio', or 'contact'.");
   }
 }
-
 function handleSearch(e) { if(e.key === 'Enter') executeSearch(); }
 
-    
   </script>
 </body>
 </html>
