@@ -278,43 +278,51 @@
     }
 
 /* Search Engine Style */
+body {
+ font-family: 'Inter', sans-serif;
+ background-color: #0d0e12;
+ color: #fff;
+ margin: 0;
+ padding: 0;
+}
 .search-container {
-  padding: 30px 20px 10px;
-  max-width: 800px;
-  margin: 0 auto;
+ display: flex;
+ justify-content: center;
+ padding: 20px;
 }
 .search-wrapper {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  padding: 5px 20px;
-  border-radius: 50px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
+ position: relative;
+ width: 100%;
+ max-width: 600px;
 }
-.search-wrapper:hover, .search-wrapper:focus-within {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+#siteSearch {
+ width: 100%;
+ padding: 15px 50px 15px 20px;
+ border-radius: 30px;
+ border: 1px solid #333;
+ background: #1a1c23;
+ color: #fff;
+ font-size: 16px;
 }
-.search-wrapper input {
-  background: transparent;
-  border: none;
-  padding: 15px;
-  color: white;
-  width: 100%;
-  outline: none;
-  font-size: 16px;
+.search-icons {
+ position: absolute;
+ right: 20px;
+ top: 50%;
+ transform: translateY(-50%);
+ display: flex;
+ align-items: center;
+ gap: 15px;
 }
-.search-icon { color: var(--text-muted); margin-right: 10px; }
-.search-btn {
-  background: var(--accent-cyan);
-  color: #000;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 25px;
-  font-weight: 700;
-  cursor: pointer;
+.search-icons i {
+ color: #8b94a0;
+ cursor: pointer;
+ font-size: 18px;
+}
+.search-icons i:hover {
+ color: #00e5ff;
+}
+#mic-btn.listening {
+ color: #ff0055;
 }
 
 
@@ -608,13 +616,16 @@
     <a href="#portfolio" class="nav-link">Case Studies</a>
   </nav>
 <!-- Search Engine Component -->
-<div class="search-container" id="search-section">
-  <div class="search-wrapper">
-    <i class="fas fa-search search-icon"></i>
-    <input type="text" id="siteSearch" placeholder="Search services, pricing or portfolio..." onkeypress="handleSearch(event)">
-    <button class="search-btn" onclick="executeSearch()">Search</button>
-  </div>
+<div class="search-container">
+ <div class="search-wrapper">
+ <input type="text" id="siteSearch" placeholder="Search..." onkeypress="handleSearch(event)">
+ <div class="search-icons">
+ <i class="fas fa-search" onclick="executeSearch()"></i>
+ <i class="fas fa-microphone" id="mic-btn" onclick="startVoiceInput()"></i>
+ </div>
+ </div>
 </div>
+
 
   <!-- SIDEBAR WITH OVERLAY -->
   <div class="overlay" id="menuOverlay" onclick="closeSidebarMenu()"></div>
@@ -1194,40 +1205,75 @@
     }
     setTimeout(typeEffect, 800);
 function executeSearch() {
-  const query = document.getElementById('siteSearch').value.toLowerCase();
-  if(!query) return;
-  
-  const sections = {
-    "logo": "#graphics",
-    "poster": "#graphics",
-    "flyer": "#graphics",
-    "business card": "#graphics",
-    "video": "#video",
-    "reel": "#video",
-    "tiktok": "#video",
-    "corporate promo": "#video",
-    "order": "#orders-portal",
-    "pricing": "#orders-portal",
-    "portfolio": "#portfolio",
-    "case studies": "#portfolio",
-    "faq": "#faqs",
-    "contact": "#contact"
-  };
+ const query = document.getElementById('siteSearch').value.toLowerCase();
+ if (!query) return;
+ 
+ const sections = {
+ "logo": "#graphics",
+ "poster": "#graphics",
+ "flyer": "#graphics",
+ "business card": "#graphics",
+ "video": "#video",
+ "reel": "#video",
+ "tiktok": "#video",
+ "corporate promo": "#video",
+ "order": "#orders-portal",
+ "pricing": "#orders-portal",
+ "portfolio": "#portfolio",
+ "case studies": "#portfolio",
+ "faq": "#faqs",
+ "contact": "#contact"
+ };
 
-  let found = false;
-  for (let key in sections) {
-    if (query.includes(key)) {
-      document.querySelector(sections[key]).scrollIntoView({ behavior: 'smooth' });
-      found = true;
-      break;
-    }
-  }
+ let found = false;
+ for (let key in sections) {
+ if (query.includes(key)) {
+ document.querySelector(sections[key]).scrollIntoView({ behavior: 'smooth' });
+ found = true;
+ break;
+ }
+ }
 
-  if (!found) {
-    alert("Results not found. Try searching for 'logo', 'video', 'portfolio', or 'contact'.");
-  }
+ if (!found) {
+ alert("Results not found. Try searching for 'logo', 'video', 'portfolio', or 'contact'.");
+ }
 }
-function handleSearch(e) { if(e.key === 'Enter') executeSearch(); }
+
+function handleSearch(e) {
+ if (e.key === 'Enter') executeSearch();
+}
+
+function startVoiceInput() {
+ const micBtn = document.getElementById('mic-btn');
+ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+ 
+ if (!SpeechRecognition) {
+ alert("Speech recognition is not supported in your browser.");
+ return;
+ }
+
+ const recognition = new SpeechRecognition();
+ recognition.lang = 'hi-IN';
+ recognition.start();
+
+ micBtn.classList.add('listening');
+
+ recognition.onresult = function(event) {
+ const spokenText = event.results[0][0].transcript;
+ document.getElementById('siteSearch').value = spokenText;
+ executeSearch();
+ };
+
+ recognition.onerror = function(event) {
+ console.error(event.error);
+ micBtn.classList.remove('listening');
+ };
+
+ recognition.onend = function() {
+ micBtn.classList.remove('listening');
+ };
+}
+
 
   </script>
 </body>
