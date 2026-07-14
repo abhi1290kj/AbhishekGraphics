@@ -77,18 +77,91 @@
     .branding-container {
       width: 100%;
       text-align: center;
-      padding-top: 20px;
+      position: relative;
     }
-    .banner img {
+    
+    /* Modern Sliding Banner Container */
+    .banner-slider {
       width: 100%;
-      max-height: 280px;
-      object-fit: cover;
+      max-height: 320px;
+      height: 35vw;
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
       border-bottom: 2px solid var(--glass-border);
     }
+    .slider-wrapper {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Slider Navigation Controls */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(8, 5, 22, 0.7);
+      border: 1px solid var(--glass-border);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 15;
+      transition: all 0.3s;
+      backdrop-filter: blur(5px);
+    }
+    .slider-btn:hover {
+      background: var(--accent-neon);
+      border-color: var(--accent-neon);
+      box-shadow: 0 0 15px var(--accent-neon);
+    }
+    .slider-btn.prev { left: 20px; }
+    .slider-btn.next { right: 20px; }
+    
+    /* Dots Indicator */
+    .slider-dots {
+      position: absolute;
+      bottom: 50px; /* Logo के ऊपर रखने के लिए थोड़ा गैप */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 15;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: var(--accent-cyan);
+      width: 24px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
     .logo-box {
       margin-top: -40px;
       position: relative;
-      z-index: 10;
+      z-index: 20;
     }
     .logo-box img {
       height: 90px;
@@ -426,6 +499,9 @@
       .ai-bot-container { bottom: 95px; right: 25px; }
       .sidebar { max-width: 85%; }
       .corner-dots-btn { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 18px; }
+      .slider-btn { width: 32px; height: 32px; }
+      .slider-btn.prev { left: 10px; }
+      .slider-btn.next { right: 10px; }
     }
   </style>
 </head>
@@ -441,11 +517,32 @@
     <i class="fas fa-ellipsis-v"></i>
   </div>
 
-  <!-- Logo & Banner Unit -->
+  <!-- Logo & sliding Banner Unit -->
   <div class="branding-container">
-    <div class="banner">
-      <img src="file_00000000a0b471fba1d536a379b80725.png" alt="Pixel Pundi Banner">
+    <div class="banner-slider">
+      <div class="slider-wrapper" id="sliderWrapper">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <img src="file_00000000a0b471fba1d536a379b80725.png" alt="Pixel Pundi Banner 1">
+        </div>
+        <!-- Slide 2 (Temporary Placeholder Image, change src to your banners) -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Pixel Pundi Banner 2">
+        </div>
+        <!-- Slide 3 (Temporary Placeholder Image) -->
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&auto=format&fit=crop" alt="Pixel Pundi Banner 3">
+        </div>
+      </div>
+      
+      <!-- Slide Control Buttons -->
+      <div class="slider-btn prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></div>
+      <div class="slider-btn next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></div>
+      
+      <!-- Dots Indicator -->
+      <div class="slider-dots" id="sliderDots"></div>
     </div>
+    
     <div class="logo-box">
       <a href="file_00000000ef9c7208a24a6563ae630d69" target="_blank">
         <img src="file_00000000ef9c7208a24a6563ae630d69.png" alt="Pixel Pundi Logo">
@@ -711,6 +808,64 @@
     let recognition;
     let isVoiceListening = false;
 
+    // Slider Script Implementation
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    const totalSlides = slides.length;
+    const dotsContainer = document.getElementById('sliderDots');
+    let sliderInterval;
+
+    // Generate Dot indicators based on slide counts
+    function initSlider() {
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          resetSliderTimer();
+        });
+        dotsContainer.appendChild(dot);
+      }
+      startSliderTimer();
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function goToSlide(slideIndex) {
+      currentSlide = slideIndex;
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+      updateDots();
+    }
+
+    function moveSlide(direction) {
+      goToSlide(currentSlide + direction);
+      resetSliderTimer();
+    }
+
+    function startSliderTimer() {
+      sliderInterval = setInterval(() => {
+        moveSlide(1);
+      }, 5000); // 5 सेकंड में ऑटो-चेंज होगा
+    }
+
+    function resetSliderTimer() {
+      clearInterval(sliderInterval);
+      startSliderTimer();
+    }
+
     function generateHtmlCaptcha() {
         currentCaptchaCode = Math.floor(1000 + Math.random() * 9000).toString();
         document.getElementById('htmlCaptchaBox').innerText = currentCaptchaCode;
@@ -723,6 +878,7 @@
       generateHtmlCaptcha();
       loadSavedChatLogs();
       initializeDefaultOrdersEngine();
+      initSlider(); // Initialize the Slider
     });
 
     function openSidebarMenu() {
@@ -903,6 +1059,17 @@
         recognition.continuous = false;
         recognition.lang = 'hi-IN' || 'en-US'; 
         recognition.interimResults = false;
+
+        recognition.onstart = () => {
+          isVoiceListening = true;
+          micBtn.classList.add('mic-active');
+          document.getElementById('userInput').placeholder = "Listening voice framework matrix...";
+        };
+
+        recognition.onerror = (err) => {
+          console.error(err);
+          stopVoiceProcessingLogs();
+        };
 
         recognition.onstart = () => {
           isVoiceListening = true;
