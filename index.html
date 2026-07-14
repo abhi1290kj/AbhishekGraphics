@@ -277,6 +277,49 @@
       transform: scale(1.1);
     }
 
+/* Search Engine Style */
+.search-container {
+  padding: 30px 20px 10px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.search-wrapper {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+.search-wrapper:hover, .search-wrapper:focus-within {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.search-wrapper input {
+  background: transparent;
+  border: none;
+  padding: 15px;
+  color: white;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+}
+.search-icon { color: var(--text-muted); margin-right: 10px; }
+.search-btn {
+  background: var(--accent-cyan);
+  color: #000;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+
+    
     /* Premium Sidebar Overlay & Panels */
     .overlay {
       position: fixed;
@@ -564,6 +607,14 @@
     <a href="#orders-portal" class="nav-link">Order Workspace</a>
     <a href="#portfolio" class="nav-link">Case Studies</a>
   </nav>
+<!-- Search Engine Component -->
+<div class="search-container" id="search-section">
+  <div class="search-wrapper">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="siteSearch" placeholder="Search services, pricing or portfolio..." onkeypress="handleSearch(event)">
+    <button class="search-btn" onclick="executeSearch()">Search</button>
+  </div>
+</div>
 
   <!-- SIDEBAR WITH OVERLAY -->
   <div class="overlay" id="menuOverlay" onclick="closeSidebarMenu()"></div>
@@ -1142,6 +1193,38 @@
       setTimeout(typeEffect, speed);
     }
     setTimeout(typeEffect, 800);
+
+function executeSearch() {
+  const query = document.getElementById('siteSearch').value.toLowerCase();
+  if(!query) return;
+  
+  // Ye search term ke hisab se scroll karega
+  const sections = {
+    "logo": "#graphics",
+    "poster": "#graphics",
+    "video": "#video",
+    "reel": "#video",
+    "order": "#orders-portal",
+    "portfolio": "#portfolio"
+  };
+
+  let found = false;
+  for (let key in sections) {
+    if (query.includes(key)) {
+      document.querySelector(sections[key]).scrollIntoView({ behavior: 'smooth' });
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    alert("Results not found. Try 'logo', 'video', or 'portfolio'.");
+  }
+}
+
+function handleSearch(e) { if(e.key === 'Enter') executeSearch(); }
+
+    
   </script>
 </body>
 </html>
