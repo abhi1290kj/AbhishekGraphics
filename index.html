@@ -1145,3 +1145,95 @@
   </script>
 </body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Pundi | AI Creative Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root { --bg-primary: #080516; --accent-neon: #ff0055; --accent-cyan: #00f0ff; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: #fff; margin: 0; }
+
+    /* Branding Section */
+    .branding-container { width: 100%; text-align: center; padding-bottom: 20px; }
+    .banner-slider { width: 100%; height: 300px; position: relative; overflow: hidden; border-bottom: 3px solid var(--accent-neon); }
+    .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.6s ease; }
+    .slide { min-width: 100%; height: 100%; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .logo-container { margin-top: -60px; position: relative; z-index: 10; }
+    .logo-container img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--bg-primary); background: var(--bg-primary); box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+    
+    .slider-dots { margin-top: 15px; display: flex; justify-content: center; gap: 10px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; }
+    .dot.active { background: var(--accent-cyan); width: 30px; border-radius: 10px; }
+
+    /* Chatbot/Search UI */
+    .chat-box { position: fixed; bottom: 20px; right: 20px; width: 300px; background: #1a1a2e; border: 1px solid #333; border-radius: 15px; overflow: hidden; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .chat-header { padding: 15px; background: var(--accent-neon); font-weight: bold; }
+    .chat-body { height: 200px; padding: 10px; overflow-y: auto; font-size: 13px; }
+    .chat-input { width: 100%; padding: 10px; border: none; background: #0f0f1a; color: white; }
+  </style>
+</head>
+<body>
+
+  <!-- Branding -->
+  <div class="branding-container">
+    <div class="banner-slider">
+      <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slide"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" alt="Banner"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=1200" alt="Banner"></div>
+      </div>
+    </div>
+    <div class="logo-container">
+      <img src="file_00000000ef9c7208a24a6563ae630d69.png" alt="Logo">
+    </div>
+    <div class="slider-dots" id="sliderDots">
+      <div class="dot active"></div><div class="dot"></div>
+    </div>
+  </div>
+
+  <header style="text-align: center; padding: 20px;">
+    <h1>Pixel Pundi</h1>
+    <p>AI Design & Video Architecture</p>
+  </header>
+
+  <!-- Search/Chat Engine -->
+  <div class="chat-box">
+    <div class="chat-header">AI Search & Support</div>
+    <div class="chat-body" id="chatOutput">Search "Logo", "Video", or "Order"..</div>
+    <input type="text" class="chat-input" id="searchBar" placeholder="Type here..." onkeypress="handleSearch(event)">
+  </div>
+
+  <script>
+    // Slider
+    let currentSlide = 0;
+    const wrapper = document.getElementById('sliderWrapper');
+    const dots = document.querySelectorAll('.dot');
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % 2;
+      wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }, 4000);
+
+    // Search Engine Logic
+    function handleSearch(e) {
+      if (e.key === 'Enter') {
+        const query = e.target.value.toLowerCase();
+        const output = document.getElementById('chatOutput');
+        if (query.includes('logo')) output.innerText = "2D Logo: ₹199, 3D Logo: ₹299. DM for details!";
+        else if (query.includes('video')) output.innerText = "Reels Editing: ₹400, YouTube: ₹500.";
+        else if (query.includes('order')) output.innerText = "Order process: Select service -> Contact on WhatsApp.";
+        else output.innerText = "Search result not found. Try 'Logo' or 'Video'.";
+        e.target.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
+
