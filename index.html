@@ -3,173 +3,486 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Design Graphics - Premium Hub</title>
+  <title>Pixel Pundi - Premium AI Design & Video Studio</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Design Graphics - Logo, Poster, Reels, Cards, and more. Professional design services by Abhishek Dubey.">
-  <meta name="keywords" content="logo design, graphics, reels editing, instagram posters, business card design">
+  <!-- SEO Enhancement -->
+  <meta name="description" content="Pixel Pundi - Advanced AI-driven Logo, Premium Video Editing, Reels, Posters, and Brand Identity by Abhishek Dubey.">
+  <meta name="keywords" content="logo design, premium video editing, reels editing, business card, graphics designer, ai creative solutions, abhishek dubey">
   <meta name="author" content="Abhishek Dubey">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/your-logo-path.png">
+  <link rel="icon" type="image/png" href="file_00000000ef9c7208a24a6563ae630d69.png">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Inter & Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- AOS Animation -->
+  <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-primary: #080516;
+      --bg-secondary: #0f0c24;
+      --accent-neon: #ff0033;
+      --accent-cyan: #00f0ff;
+      --accent-purple: #7928ca;
+      --text-main: #ffffff;
+      --text-muted: #a0aec0;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #fff;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-primary), #140f34, #07070f);
+      color: var(--text-main);
+      overflow-x: hidden;
     }
 
-    /* Preloader */
+    /* Modern Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-neon); border-radius: 4px; }
+
+    /* Custom Preloader */
     #preloader {
-      background: #0f0c29;
+      background: var(--bg-primary);
       position: fixed;
       width: 100%;
       height: 100%;
-      z-index: 1000;
+      z-index: 99999;
       display: flex;
       justify-content: center;
       align-items: center;
     }
     .loader {
-      border: 8px solid #fff;
-      border-top: 8px solid #ff0033;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top: 4px solid var(--accent-neon);
+      border-right: 4px solid var(--accent-cyan);
       border-radius: 50%;
       width: 60px;
       height: 60px;
-      animation: spin 1s linear infinite;
+      animation: spin 0.8s linear infinite;
     }
-    @keyframes spin {
-      0% { transform: rotate(0); }
-      100% { transform: rotate(360deg); }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* Branding & Header */
+    .branding-container {
+      width: 100%;
+      text-align: center;
+      padding-top: 20px;
+    }
+    .banner img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-bottom: 2px solid var(--glass-border);
+    }
+    .logo-box {
+      margin-top: -40px;
+      position: relative;
+      z-index: 10;
+    }
+    .logo-box img {
+      height: 90px;
+      background: rgba(8, 5, 22, 0.85);
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     header {
-      background: #000000aa;
-      padding: 30px 20px;
+      padding: 40px 20px;
       text-align: center;
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid #ff0033;
+      position: relative;
     }
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 34px;
-      color: #ff0033;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(to right, #fff, #ff0033);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
     }
-    nav {
-      background: #1a1a1a;
+    .ai-badge {
+      background: linear-gradient(45deg, var(--accent-neon), var(--accent-purple));
+      color: white;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 51, 0.4);
+    }
+    .typing-text { color: var(--accent-cyan); font-weight: 600; }
+
+    /* Unified Sticky Navbar */
+    .main-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       display: flex;
-      justify-content: space-around;
-      padding: 12px 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      background: #ff0033;
-      box-shadow: 0 0 10px #ff0033;
-    }
-
-    section {
-      padding: 30px 20px;
-    }
-
-    .services, .offers, .portfolio {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.07);
+      justify-content: center;
+      gap: 10px;
+      background: rgba(8, 5, 22, 0.8);
+      padding: 15px;
       backdrop-filter: blur(15px);
-      padding: 20px;
-      border-radius: 15px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .main-navbar a, .main-navbar .dropbtn {
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 20px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .main-navbar a:hover, .main-navbar .dropdown:hover .dropbtn, .main-navbar a.active {
+      background: rgba(255, 0, 51, 0.15);
+      color: var(--accent-neon);
+    }
+    .dropdown { position: relative; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--bg-secondary);
+      min-width: 180px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      padding: 5px 0;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      border-radius: 0;
+      text-align: left;
+    }
+    .dropdown-content a:hover { background: rgba(255,255,255,0.05); }
+    .dropdown-content.show { display: block; }
+
+    /* Content Sections */
+    section {
+      padding: 80px 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
       text-align: center;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.6);
-      transition: transform 0.3s;
+      margin-bottom: 50px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      color: var(--text-main);
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent-neon);
+      border-radius: 2px;
+    }
+
+    /* Dynamic Grid Layout */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      padding: 35px 25px;
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 15px #ff0033;
+      transform: translateY(-8px);
+      border-color: rgba(255, 0, 51, 0.4);
+      box-shadow: 0 15px 35px rgba(255, 0, 51, 0.15);
     }
-    .card img {
-      max-width: 100%;
-      border-radius: 12px;
+    .card .price-tag {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin: 15px 0;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .card span:first-child {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
+    /* High-Converting CTA Buttons */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: linear-gradient(45deg, var(--accent-neon), #d6002a);
+      color: #fff;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      border: none;
+      box-shadow: 0 5px 15px rgba(255, 0, 51, 0.3);
+    }
+    .cta:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(255, 0, 51, 0.5);
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .portfolio-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      height: 250px;
+    }
+    .portfolio-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .portfolio-card:hover img { transform: scale(1.1); }
+
+    /* Interactive FAQs Section */
+    .faq-wrapper { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .faq-trigger {
+      width: 100%;
+      padding: 18px 20px;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+      padding: 0 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-content { max-height: 1000px; padding-bottom: 18px; }
+
+    /* Secure Form Layout */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 40px 30px;
+      border-radius: 16px;
+    }
     .contact-form input, .contact-form textarea {
       width: 100%;
-      padding: 12px;
-      margin-top: 12px;
+      padding: 14px;
+      margin-top: 18px;
       border-radius: 8px;
-      border: none;
-      background: #1e1e1e;
+      border: 1px solid var(--glass-border);
+      background: rgba(0,0,0,0.2);
       color: #fff;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.3s;
     }
-    .contact-form button {
-      margin-top: 15px;
-      padding: 12px 18px;
-      background: #ff0033;
-      border: none;
-      color: #fff;
-      border-radius: 30px;
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent-cyan); }
+    .captcha-container { display: flex; align-items: center; gap: 15px; margin-top: 18px; }
+    .captcha-box {
+      background: linear-gradient(45deg, var(--accent-neon), var(--accent-purple));
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
       font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #ff0033;
+      padding: 10px 20px;
+      border-radius: 8px;
+      letter-spacing: 4px;
+      user-select: none;
     }
+    #formResponse { margin-top: 15px; text-align: center; font-size: 14px; font-weight: 500; }
 
+    /* Floating Intelligent Chatbot System */
+    .ai-bot-container { position: fixed; bottom: 95px; right: 25px; z-index: 9999; }
+    .ai-chat-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0, 240, 255, 0.3);
+      transition: 0.3s;
+      border: 2px solid var(--accent-cyan);
+      overflow: hidden;
+    }
+    .ai-chat-btn:hover { transform: translateY(-4px); }
+    .ai-popup {
+      display: none;
+      position: absolute;
+      bottom: 75px;
+      right: 0;
+      width: 330px;
+      height: 460px;
+      background: #0b081d;
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .ai-popup-header {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--accent-neon));
+      padding: 15px;
+      font-size: 14px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .ai-chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: rgba(0,0,0,0.15);
+    }
+    .msg { padding: 10px 14px; border-radius: 12px; max-width: 85%; font-size: 13px; line-height: 1.4; }
+    .msg.bot { background: rgba(255,255,255,0.06); align-self: flex-start; border-left: 3px solid var(--accent-cyan); }
+    .msg.user { background: var(--accent-neon); align-self: flex-end; color: #fff; }
+    .ai-chat-input-area { display: flex; padding: 12px; background: #060412; border-top: 1px solid var(--glass-border); }
+    .ai-chat-input-area input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--glass-border);
+      padding: 10px 16px;
+      color: white;
+      border-radius: 24px;
+      outline: none;
+      font-size: 13px;
+    }
+    .ai-chat-input-area button {
+      background: var(--accent-neon);
+      border: none;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-left: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.2s;
+    }
+    .ai-chat-input-area button:hover { background: var(--accent-cyan); color: #000; }
+    .typing-indicator { display: none; align-self: flex-start; color: var(--accent-cyan); font-size: 12px; padding-left: 5px;}
+
+    /* Modern Footer */
     footer {
       text-align: center;
-      padding: 30px 20px;
-      background: #0d0d0d;
-      border-top: 2px solid #ff0033;
+      padding: 60px 20px 40px;
+      background: #04020a;
+      border-top: 1px solid var(--glass-border);
     }
-
-    .social-icons a {
-      margin: 0 10px;
-      color: #ff0033;
-      font-size: 22px;
-      text-decoration: none;
-    }
-
     .social-btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 25px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px;
+      padding: 12px 28px;
       border-radius: 30px;
-      font-weight: bold;
+      font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 14px;
       transition: 0.3s;
     }
-    .social-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #fff;
-    }
+    .social-btn:hover { transform: translateY(-3px); }
 
-    @media(max-width: 600px) {
-      .services, .offers, .portfolio { grid-template-columns: 1fr; }
+    /* Floating WhatsApp Trigger */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 100px;
+      background: #25D366;
+      color: white;
+      height: 55px;
+      width: 55px;
+      border-radius: 50%;
+      font-size: 26px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    @media(max-width: 768px) {
+      header h1 { font-size: 32px; }
+      .main-navbar { overflow-x: auto; justify-content: flex-start; padding: 10px; }
+      .main-navbar a, .main-navbar .dropbtn { font-size: 13px; padding: 6px 14px; }
+      .whatsapp-float { right: 25px; bottom: 25px; }
+      .ai-bot-container { bottom: 95px; right: 25px; }
     }
   </style>
 </head>
@@ -179,198 +492,346 @@
   <div id="preloader">
     <div class="loader"></div>
   </div>
-
-  <!-- Logo -->
-  <div style="text-align: center; padding: 20px 0;">
-    <a href="https://designgraphics.in" target="_blank">
-      <img src="/storage/emulated/0/Documents/pixelLab/20250724_002009.png" alt="Design Graphics Logo" style="height: 80px;">
-    </a>
+  
+  <!-- Logo & Banner Unit -->
+  <div class="branding-container">
+    <div class="banner">
+      <img src="file_00000000a0b471fba1d536a379b80725.png" alt="Pixel Pundi Banner">
+    </div>
+    <div class="logo-box">
+      <a href="file_00000000ef9c7208a24a6563ae630d69" target="_blank">
+        <img src="file_00000000ef9c7208a24a6563ae630d69.png" alt="Pixel Pundi Logo">
+      </a>
+    </div>
   </div>
 
   <header>
-    <h1>🎨 Design Graphics</h1>
-    <p>Creative Design Hub – Logo | Poster | Reels | Cards</p>
-    <p>OWNER: Abhishek Dubey</p>
+    <div class="ai-badge"><i class="fas fa-bolt"></i> Live Design Suite v2.6</div>
+    <h1>Pixel Pundi</h1>
+    <p style="color: var(--text-muted); font-size: 16px;">Next-Gen Creative Ecosystem – <span class="typing-text" id="typing-hook"></span></p>
+    <p style="margin-top: 12px; font-size: 14px; letter-spacing: 0.5px;">Director: <strong>Abhishek Dubey</strong></p>
   </header>
 
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#offers">Offers</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
+  <!-- Sticky Navigation -->
+  <nav class="main-navbar">
+    <a href="#graphics" class="nav-link">Graphics</a>
+    <a href="#video" class="nav-link">Video Architecture</a>
+    <a href="#offers" class="nav-link">Premium Offers</a>
+    <a href="#portfolio" class="nav-link">Case Studies</a>
+    <span class="dropdown">
+        <a class="dropbtn" id="dropdownMenuBtn">More <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i></a>
+        <div class="dropdown-content" id="dropdownContent">
+            <a href="#faqs">FAQs</a>
+            <a href="#contact">Consultation</a>
+        </div>
+    </span>
   </nav>
 
-   <!-- Graphic Services --><br>
-<section id="graphics">
-  <h2>🖌️ Graphics Services</h2><br><br>
-  <div class="grid">
-    <div class="card">
-      2D Logo Design – ₹199
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20your%202D%20Logo%20Design%20for%20%E2%82%B9199" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      3D Logo Design – ₹299
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20your%203D%20Logo%20Design%20for%20%E2%82%B9299" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      Instagram Posters – ₹149
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Instagram%20Posters%20for%20%E2%82%B9149" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      Banner Design – ₹249
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Banner%20Design%20for%20%E2%82%B9249" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      Business Card Design – ₹199
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Business%20Card%20Design%20for%20%E2%82%B9199" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-<section id="video">
-  <h2>🎬 Video Editing Services</h2><br>
-  <div class="grid">
-    <div class="card">
-      YouTube Editing – ₹500
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20YouTube%20Video%20Editing%20for%20%E2%82%B9500" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      Reels / TikTok – ₹400
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Reels%20or%20TikTok%20Video%20Editing%20for%20%E2%82%B9400" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      Wedding Highlights – ₹1500
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Wedding%20Highlights%20Editing%20for%20%E2%82%B91500" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      Corporate Promo – ₹1200
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Corporate%20Promo%20Video%20Editing%20for%20%E2%82%B91200" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-    <div class="card">
-      Color Grading – ₹699
-      <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Color%20Grading%20Service%20for%20%E2%82%B9699" target="_blank">
-        <button class="cta">Order Now</button>
-      </a>
-    </div><br><br>
-  </div>
-  </section>
-
-
-
-
-
-
-  
-  <!-- Offers (Click to WhatsApp) -->
-  <section id="offers">
-    <h2>🔥 Current Offers</h2><br>
-    <div class="offers">
-     
-      <a href="https://wa.me/919335830569?text=Hi%20I'm%20interested%20in%20your%202D%20Logo%20offer" target="_blank" class="card" style="text-decoration: none; color: white;">
-        Basic Edit (under 2 min): ₹199<button class="cta">Order Now</button>
-      </a>
-      <a href="https://wa.me/919335830569?text=Hi%20I'm%20interested%20in%20your%203D%20Logo%20offer" target="_blank" class="card" style="text-decoration: none; color: white;">
-       Standard (up to 5 min): ₹499<button class="cta">Order Now</button>
-      </a>
-      <a href="https://wa.me/919335830569?text=Hi%20I'm%20interested%20in%20your%20Full%20Logo%20Pack%20offer" target="_blank" class="card" style="text-decoration: none; color: white;">
-        Premium (up 5–15 min): ₹999<button class="cta">Order Now</button>
-      </a>
-      <a href="https://wa.me/919335830569?text=Hi%20I'm%20interested%20in%20your%20Full%20Logo%20Pack%20offer" target="_blank" class="card" style="text-decoration: none; color: white;">
-        Combo video Editing ₹2199<button class="cta">Order Now</button>
-      </a>
+  <!-- Graphics Ecosystem -->
+  <section id="graphics" data-aos="fade-up">
+    <h2>Ecosystem Graphics</h2>
+    <div class="grid-container">
+      <div class="card">
+        <span>2D Futuristic Logo</span>
+        <div class="price-tag">₹199</div>
+        <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20your%202D%20Logo%20Design" target="_blank" class="cta"><i class="fab fa-whatsapp"></i> Initialize Order</a>
+      </div>
+      <div class="card">
+        <span>3D Cyber Logo Vector</span>
+        <div class="price-tag">₹299</div>
+        <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20your%203D%20Logo%20Design" target="_blank" class="cta"><i class="fab fa-whatsapp"></i> Initialize Order</a>
+      </div>
+      <div class="card">
+        <span>High-Conversion Posters</span>
+        <div class="price-tag">₹149</div>
+        <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Instagram%20Posters" target="_blank" class="cta"><i class="fab fa-whatsapp"></i> Initialize Order</a>
+      </div>
+      <div class="card">
+        <span>Brand Identity Banners</span>
+        <div class="price-tag">₹249</div>
+        <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Banner%20Design" target="_blank" class="cta"><i class="fab fa-whatsapp"></i> Initialize Order</a>
+      </div>
     </div>
   </section>
 
-
-
-
-
-  
-  <section id="portfolio">
-    <h2>📸 Portfolio</h2><br>
-    <div class="portfolio">
-      <div class="card" data-aos="flip-left"><img src="https://via.placeholder.com/150" alt="Work 1"></div>
-      <div class="card" data-aos="flip-left"><img src="https://via.placeholder.com/150" alt="Work 2"></div>
-      <div class="card" data-aos="flip-left"><img src="https://via.placeholder.com/150" alt="Work 3"></div>
-      <div class="card" data-aos="flip-left"><img src="https://via.placeholder.com/150" alt="Work 4"></div>
+  <!-- Video Architecture -->
+  <section id="video" data-aos="fade-up">
+    <h2>Video Production Engine</h2>
+    <div class="grid-container">
+      <div class="card">
+        <span>YouTube Cinematic Master</span>
+        <div class="price-tag">₹500</div>
+        <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20YouTube%20Video%20Editing" target="_blank" class="cta"><i class="fab fa-whatsapp"></i> Secure Slot</a>
+      </div>
+      <div class="card">
+        <span>Micro-Content (Reels/TikTok)</span>
+        <div class="price-tag">₹400</div>
+        <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Reels%20Editing" target="_blank" class="cta"><i class="fab fa-whatsapp"></i> Secure Slot</a>
+      </div>
+      <div class="card">
+        <span>Corporate Promo Campaigns</span>
+        <div class="price-tag">₹1200</div>
+        <a href="https://wa.me/919335830569?text=Hi%2C%20I'm%20interested%20in%20Corporate%20Promo" target="_blank" class="cta"><i class="fab fa-whatsapp"></i> Secure Slot</a>
+      </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>📞 Contact Us</h2><br>
-    <form class="contact-form" data-aos="fade-up">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+  <!-- Strategic Packages / Offers -->
+  <section id="offers" data-aos="fade-up">
+    <h2>Current Micro-Packages</h2>
+    <div class="grid-container">
+      <div class="card">
+        <span>Basic Configuration (&lt; 2 min)</span>
+        <div class="price-tag">₹199</div>
+        <a href="https://wa.me/919335830569?text=Hi%20I'm%20interested%20in%20Basic%20Edit" target="_blank" class="cta">Deploy Build</a>
+      </div>
+      <div class="card">
+        <span>Standard Architecture (&lt; 5 min)</span>
+        <div class="price-tag">₹499</div>
+        <a href="https://wa.me/919335830569?text=Hi%20I'm%20interested%20in%20Standard%20Edit" target="_blank" class="cta">Deploy Build</a>
+      </div>
+      <div class="card">
+        <span>Enterprise Combo Pack</span>
+        <div class="price-tag">₹2199</div>
+        <a href="https://wa.me/919335830569?text=Hi%20I'm%20interested%20in%20Combo%20Video%20Editing" target="_blank" class="cta">Deploy Build</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- High Profile Portfolio Portfolio -->
+  <section id="portfolio" data-aos="fade-up">
+    <h2>Creative Case Studies</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=500" alt="Artwork"></div>
+      <div class="portfolio-card"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500" alt="AI Vector"></div>
+      <div class="portfolio-card"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=500" alt="Brand Identity"></div>
+      <div class="portfolio-card"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=500" alt="Poster Model"></div>
+    </div>
+  </section>
+
+  <!-- Interactive Intelligent System FAQs -->
+  <section id="faqs" data-aos="fade-up">
+    <h2>Frequently Answered Modules</h2>
+    <div class="faq-wrapper">
+      <div class="faq-item">
+        <button class="faq-trigger">What is the delivery timeline parameter? <i class="fas fa-plus"></i></button>
+        <div class="faq-content">Standard digital design blueprints are generated and delivered within 24 to 48 structural hours depending upon complex configurations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">Can I demand asset revisions? <i class="fas fa-plus"></i></button>
+        <div class="faq-content">Yes, our foundational design plans incorporate standard iterative processing loops to customize output variations seamlessly.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secure Consultation Interface -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Initialize Digital Consultation</h2>
+    <form class="contact-form" id="pureHtmlForm" action="https://formsubmit.co/abhishek21dubeyji@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" id="formName" placeholder="Client Name / Identity" required>
+      <input type="email" name="email" id="formEmail" placeholder="Communication Email Endpoint" required>
+      <textarea name="message" id="formMessage" rows="4" placeholder="Describe Project Scope & Architecture" required></textarea>
+      
+      <div class="captcha-container">
+        <div class="captcha-box" id="htmlCaptchaBox">0000</div>
+        <input type="text" id="formCaptchaInput" style="margin-top:0;" placeholder="Resolve Security Captcha" required>
+      </div>
+      <button type="submit" class="cta" style="width:100%; justify-content:center; margin-top:20px;">Transmit Secure Message</button>
+      <div id="formResponse"></div>
     </form>
   </section>
 
-  <footer>
-    <p>© 2025 Design Graphics | WhatsApp: 9335830569</p>
-    <div class="social-icons">
-      <a href="https://instagram.com/design.graphics.dg"><i class="fab fa-instagram"></i></a>
-      <a href="mailto:designgraphicsdg@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="#"><i class="fas fa-globe"></i></a>
+  <!-- INTELLIGENT BOT POPUP SYSTEM INTERFACE -->
+  <div class="ai-bot-container">
+    <div class="ai-popup" id="aiPopup">
+      <div class="ai-popup-header">
+        <span><i class="fas fa-robot"></i> DesignBot Core v2.0</span>
+        <span style="cursor:pointer; font-size: 20px;" id="closeBotBtn">×</span>
+      </div>
+      <div class="ai-chat-messages" id="chatFlow">
+        <div class="msg bot">Hello! Main Abhishek Dubey ka core AI assistant hoon. Main aapki design pricing aur selection mein guidelines provide kar sakta hoon! 😊</div>
+        <div class="typing-indicator" id="typingIndicator"><i class="fas fa-spinner fa-spin"></i> Processing matrix data...</div>
+      </div>
+      <div class="ai-chat-input-area">
+        <input type="text" id="userInput" placeholder="Ask details about: logo, video, rate..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendUiMessage()"><i class="fas fa-paper-plane"></i></button>
+      </div>
     </div>
+    <div class="ai-chat-btn" id="aiChatBtn">
+      <img src="20260714_104825.png" alt="Bot Unit" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+  </div>
 
-    <h3>SOCIAL MEDIA PLATFORMS</h3><br>
-    <a href="https://instagram.com/designgraphics.in" target="_blank" class="social-btn" style="background-color: #E1306C; color: white;">📷 Instagram</a><br><br>
-    <a href="https://www.facebook.com/profile.php?id=61566396924154" target="_blank" class="social-btn" style="background-color: #3b5998; color: white;">👍 Facebook</a><br><br>
-    <a href="https://youtube.com/@designgraphicsin?feature=shared" target="_blank" class="social-btn" style="background-color: #FF0000; color: white;">▶️ YouTube</a>
+  <!-- Footer Matrix -->
+  <footer>
+    <p>© 2026 Pixel Pundi | Automated Secure Environment</p>
+    <div style="margin: 25px 0;">
+      <a href="https://instagram.com/designgraphics.in" target="_blank" class="social-btn" style="background: #E1306C;"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=61566396924154" target="_blank" class="social-btn" style="background: #3b5998;"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://youtube.com/@designgraphicsin" target="_blank" class="social-btn" style="background: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+    <p style="color: var(--text-muted); font-size: 12px; margin-top:20px;">Data Processing integrity is fully certified under private end-to-end framework layers.</p>
   </footer>
 
-  <p style="color: #ff0033; background-color: #000; padding: 12px; text-align: center;">
-    "We provide Safe & Reliable design solutions. <br> Your data is Secure & Trusted with us."
-  </p>
+  <!-- Direct Gateway Anchor -->
+  <a href="https://wa.me/919335830569" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/919335830569" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    padding: 15px 18px;
-    border-radius: 50%;
-    font-size: 24px;
-    box-shadow: 0 0 10px #25D366;
-    z-index: 1000;
-  " target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-  <!-- Scripts -->
+  <!-- Operational Core Scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
-    window.addEventListener('load', () => {
-      document.getElementById('preloader').style.display = 'none';
-    });
-  </script>
+    // Initialize Animations
+    AOS.init({ duration: 900, once: true });
 
+    // Global App Configuration
+    let currentCaptchaCode = "";
+
+    function generateHtmlCaptcha() {
+        currentCaptchaCode = Math.floor(1000 + Math.random() * 9000).toString();
+        document.getElementById('htmlCaptchaBox').innerText = currentCaptchaCode;
+    }
+
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      setTimeout(() => preloader.style.display = 'none', 500);
+      generateHtmlCaptcha();
+    });
+
+    // Navigation Active Class Engine & Sticky Interceptor
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if(pageYOffset >= sectionTop - 120) { current = section.getAttribute('id'); }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+      });
+    });
+
+    // Dropdown Architecture Panel
+    const dropdownMenuBtn = document.getElementById('dropdownMenuBtn');
+    const dropdownContent = document.getElementById('dropdownContent');
+    if (dropdownMenuBtn && dropdownContent) {
+      dropdownMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+      });
+      document.addEventListener('click', () => dropdownContent.classList.remove('show'));
+    }
+
+    // FAQ Accordion Engine
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const parent = trigger.parentElement;
+        parent.classList.toggle('active');
+        const icon = trigger.querySelector('i');
+        if(parent.classList.contains('active')) {
+          icon.className = "fas fa-minus";
+        } else {
+          icon.className = "fas fa-plus";
+        }
+      });
+    });
+
+    // Security Verification Logic
+    document.getElementById('pureHtmlForm').addEventListener('submit', function(e) {
+        const responseDiv = document.getElementById('formResponse');
+        const userInput = document.getElementById('formCaptchaInput').value.trim();
+        
+        if (userInput !== currentCaptchaCode) {
+            e.preventDefault();
+            responseDiv.innerHTML = '<span style="color: var(--accent-neon);">Security Code Mistmatch. Re-evaluating...</span>';
+            generateHtmlCaptcha();
+            document.getElementById('formCaptchaInput').value = "";
+        } else {
+            responseDiv.innerHTML = '<span style="color: #25D366;">Transmission Authorized! Sending...</span>';
+        }
+    });
+
+    // Core Modular Responsive Assistant Logic
+    const aiPopup = document.getElementById('aiPopup');
+    const aiChatBtn = document.getElementById('aiChatBtn');
+    const closeBotBtn = document.getElementById('closeBotBtn');
+
+    aiChatBtn.addEventListener('click', () => {
+      aiPopup.style.display = (aiPopup.style.display === 'flex') ? 'none' : 'flex';
+    });
+    closeBotBtn.addEventListener('click', () => aiPopup.style.display = 'none');
+
+    function sendUiMessage() {
+      const inputEl = document.getElementById('userInput');
+      const text = inputEl.value.trim().toLowerCase();
+      if(!text) return;
+
+      inputEl.value = '';
+      appendMessage(text, 'user');
+
+      const indicator = document.getElementById('typingIndicator');
+      indicator.style.display = 'block';
+      const flow = document.getElementById('chatFlow');
+      flow.scrollTop = flow.scrollHeight;
+
+      setTimeout(() => {
+        indicator.style.display = 'none';
+        let botResponse = "Mujhe exact module samajh nahi aaya. Logo, Video configuration, ya Offers type kijiye ya link open karein: https://wa.me/919335830569";
+
+        if (text.includes('logo')) {
+          botResponse = "Premium 2D Logo matrix baseline price ₹199 aur 3D Cyber Vectors ₹299 se initiate hote hain. WhatsApp query path: https://wa.me/919335830569";
+        } else if (text.includes('video') || text.includes('editing') || text.includes('reel')) {
+          botResponse = "Video Suite details:\n- Micro-Reels: ₹400\n- YouTube Extended: ₹500\n- Promos: ₹1200\nDirect authorization endpoint: https://wa.me/919335830569";
+        } else if (text.includes('price') || text.includes('rate') || text.includes('paisa')) {
+          botResponse = "Graphics start parameters: ₹149 to ₹299. Video engine: ₹400 to ₹1200. Secure direct billing setup over WhatsApp: https://wa.me/919335830569";
+        } else if (text.includes('offer') || text.includes('discount')) {
+          botResponse = "Active dynamic updates: Basic Engine setup package ₹199, enterprise suite integration layer at ₹2199! Connect: https://wa.me/919335830569";
+        } else if (text.includes('hi') || text.includes('hello')) {
+          botResponse = "Welcome to Pixel Pundi UI Ecosystem. Drop your query requirements here!";
+        } else if (text.includes('owner') || text.includes('abhishek')) {
+          botResponse = "Studio owner framework managed by Abhishek Dubey. Access verified endpoint path: https://wa.me/919335830569";
+        }
+
+        appendMessage(botResponse, 'bot');
+      }, 800);
+    }
+
+    function appendMessage(text, sender) {
+      const flow = document.getElementById('chatFlow');
+      const indicator = document.getElementById('typingIndicator');
+      const el = document.createElement('div');
+      el.className = `msg ${sender}`;
+      el.innerText = text;
+      flow.insertBefore(el, indicator);
+      flow.scrollTop = flow.scrollHeight;
+    }
+
+    function handleKeyPress(e) { if(e.key === 'Enter') sendUiMessage(); }
+
+    // Dynamic Engine Typography Header Loop
+    const hookElement = document.getElementById('typing-hook');
+    const phrases = ["Futuristic 3D Identity Logo Designs", "High Definition Viral Reels", "Premium Corporate Visual Architecture", "Next-Gen Vector Graphics"];
+    let phraseIdx = 0, charIdx = 0, isDeleting = false;
+
+    function typeEffect() {
+      const currentPhrase = phrases[phraseIdx];
+      if (isDeleting) {
+        hookElement.innerText = currentPhrase.substring(0, charIdx - 1);
+        charIdx--;
+      } else {
+        hookElement.innerText = currentPhrase.substring(0, charIdx + 1);
+        charIdx++;
+      }
+      let speed = isDeleting ? 40 : 80;
+      if (!isDeleting && charIdx === currentPhrase.length) { speed = 2500; isDeleting = true; }
+      else if (isDeleting && charIdx === 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; speed = 400; }
+      setTimeout(typeEffect, speed);
+    }
+    setTimeout(typeEffect, 800);
+  </script>
 </body>
 </html>
